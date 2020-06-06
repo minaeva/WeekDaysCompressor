@@ -28,10 +28,6 @@ public class WeekDaysCompressor {
                 .distinct()
                 .map(c -> String.valueOf(c))
                 .collect(Collectors.joining(""));
-
-        if (input.charAt(input.length() - 1) > 7 || input.charAt(0) < 1) {
-            throw new RuntimeException("Numbers should be [1-7]");
-        }
     }
 
     private static void compressResult() {
@@ -50,14 +46,14 @@ public class WeekDaysCompressor {
     }
 
     private static boolean isConsequent(int i) {
-        if (Integer.valueOf(input.charAt(i)) - Integer.valueOf(input.charAt(i - 1)) == 1) {
+        if (input.charAt(i) - input.charAt(i - 1) == 1) {
             return true;
         }
         return false;
     }
 
     private static boolean isSecondConsequent(int i) {
-        if (Integer.valueOf(input.charAt(i - 1)) - Integer.valueOf(input.charAt(i - 2)) == 1) {
+        if (input.charAt(i - 1) - input.charAt(i - 2) == 1) {
             return true;
         } else {
             return false;
